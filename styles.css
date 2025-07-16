@@ -1,0 +1,92 @@
+/* 1.- Reseteo */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 2.- Variables */
+:root{
+    --primary-color: #4caf50;
+    --hover-color: #45a049;
+    --background-color: #f4f4f4;
+    --card-background: #fff;
+    --shadow-color: rgba(0,0,0, 0.1);
+    --text-color: #333;
+}
+/* body  Estilos Globales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color:  var(--background-color);
+    min-height: 100vh;
+}
+/* Layout  */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.card{
+    background-color: var(--card-background);
+    width: 100%;
+    max-width: 300px;
+    min-height: 400px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border-radius: 10px;
+    padding: 20px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* titulo*/
+.card__title{
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+/* Parrafo */
+.card__text{
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: justify;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+/* Contenedor del boton */
+.card__button-container{
+    text-align: center;
+}
+/* Botón */
+.card__button{
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+
+}
+.card__button:hover{
+    background-color: var(--hover-color);
+}
+
+@media (min-width: 480px) { 
+    .card{
+        max-width: 90%;
+        padding: 15px;
+    }
+    .card__tittle{
+        font-size: 1.3rem;
+    }
+    .card__text{
+        font-size: 0.9rem;
+    }
+    .card__button{
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
