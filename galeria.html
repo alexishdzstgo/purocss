@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria con CSS Grid</title>
+    <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+    <div class="gallery-container">
+        <h1 class="gallery-title">Galeria de imagenes</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="./assets/prueba.jpg" alt="Imagen 1" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 1</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="" alt="Imagen 2" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 2</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="" alt="Imagen 3" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 3</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="" alt="Imagen 4" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 4</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="" alt="Imagen 5" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 5</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="./assets/prueba.jpg" alt="Imagen 6" class="gallery-item__image">
+                <h3 class="gallery-item__title">Imagen 6</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+    <!--
+    3. Cuadrícula de galería con CSS Grid
+
+    Crea una galería de imágenes con los siguientes requisitos:
+
+    Usa CSS Grid para crear una cuadrícula de 3 columnas en pantallas grandes.
+    Cada elemento de la cuadrícula debe ser una imagen con un borde y un título debajo.
+    En pantallas menores a 768px, la cuadrícula debe pasar a 2 columnas, y en pantallas menores a 480px, a 1 columna.
+    Al pasar el ratón por encima de una imagen, debe escalarse ligeramente (usa transform: scale).
+    Punto de evaluación: Dominio de CSS Grid, media queries, y transformaciones.
+    -->
