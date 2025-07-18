@@ -1,0 +1,61 @@
+/* Reseteo */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Variables */ 
+:root {
+  --start-color: #ff0000; /* Rojo */
+  --end-color: #0000ff; /* Azul */
+  --background-color: #f4f4f4;
+  --circle-size: 100px;
+}
+/* Estilos globales */
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    min-height: 100vh;
+}
+/* Layout */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* Componentes */
+.circle{
+  width: var(--circle-size);  
+  height: var(--circle-size);   
+  background-color: var(--start-color); 
+  border-radius: 50%;
+  animation: moveAndColor 3s infinite ease-in-out;
+}
+/* Animaciones */
+@keyframes moveAndColor{
+    0%{
+        transform: translateX(-45vw);
+        background-color: var(--start-color);
+    }
+    100%{
+        transform: translateX(45vw);
+        background-color: var(--end-color);
+    }
+}
+@media (max-width: 480px) { 
+    .circle{
+        width: calc(var(--circle-size) * 0.7);
+        height: calc(var(--circle-size) * 0.7);
+    }
+    @keyframes moveAndColor {
+    0% {
+      transform: translateX(-40vw);
+      background-color: var(--start-color);
+    }
+    100% {
+      transform: translateX(40vw);
+      background-color: var(--end-color);
+    }
+  }
+}

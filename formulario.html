@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="./formulario.css">
+    
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">Formulario </h1>
+        <form action="" class="contact-form">
+            <div class="contact-form__group">
+                <label class="contact-form__label" for="name">Nombre:</label>
+                <input class="contact-form__input" type="text" id="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="contact-form__group">
+                <label class="contact-form__label" for="email">Correo:</label>
+                <input class="contact-form__input" type="email" id="email" placeholder="Tu correo" required>
+            </div>
+            <div class="contact-form__group">
+                <label class="contact-form__label" for="message">Mensaje:</label>
+                <textarea class="contact-form__textarea" name="" id="message" placeholder="Tu mensaje" rows="5" required></textarea>
+            </div>
+            <div class="contact-form__button-container">
+                <button class="contact-form__button" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<!--
+4. Formulario estilizado
+Diseña un formulario con los siguientes elementos:
+
+Campos de entrada para nombre, correo y mensaje (textarea).
+Estiliza los campos con bordes redondeados, un color de fondo suave y un efecto de foco (:focus) que resalte el campo activo.
+Un botón de envío que cambie de color y tamaño al hacer hover.
+Usa box-sizing: border-box para manejar el padding y los bordes correctamente.
+Asegúrate de que el formulario sea responsivo y se vea bien en dispositivos móviles.
+Punto de evaluación: Estilización de formularios, pseudo-clases, y diseño responsivo.
+-->
