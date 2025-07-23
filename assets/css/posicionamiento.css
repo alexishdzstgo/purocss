@@ -32,7 +32,6 @@ header{
     padding: 1rem;
 }
 .main-content{
-    background-color: lightblue;
     margin-top: 80px;/* Espacio para el encabezado fijo */
     padding: 2rem;
     max-width: 1200px;
@@ -98,4 +97,3 @@ header{
 }
 
 
-    
