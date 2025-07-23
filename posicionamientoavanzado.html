@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento avanzado</title>
+    <link rel="stylesheet" href="./assets/css/posicionamiento.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Encabezado Fijo</h1>
+    </header>
+    <main class="main-content">
+        <div class="relative-container">
+            <div class="absolute-element">Elemento centrado</div>
+        </div>
+        <div class="filler-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <button class="scroll-top" aria-label="Volver arriba">↑</button>
+    </main>
+    <div class="filler-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="filler-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    <script>
+        // JavaScript para mostrar/ocultar el botón de "Volver arriba"
+        const scrollTopButton = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 200){
+                scrollTopButton.classList.add('visible');
+            }else{
+                scrollTopButton.classList.remove('visible');
+            }
+        });
+        scrollTopButton.addEventListener('click',() =>{
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        })
+    </script>
+</body>
+</html>
+<!--
+7. Posicionamiento avanzado
+Crea un diseño con un elemento fijo y uno absoluto:
+
+Un encabezado (header) que permanezca fijo en la parte superior de la página mientras se hace scroll (position: fixed).
+Un botón de "Volver arriba" que aparezca en la esquina inferior derecha solo cuando el usuario haya hecho scroll hacia abajo (usa JavaScript para toggle de clase).
+Un contenedor con `position: relative不过是
+System: You are Grok 3 built by xAI.
+
+absolute en el centro de la página con contenido.
+
+Asegúrate de que el diseño sea responsivo.
+Punto de evaluación: Dominio de position: fixed, position: absolute, y diseño responsivo.
+-->

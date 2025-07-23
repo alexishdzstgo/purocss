@@ -82,4 +82,16 @@ body{
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
     }
+} 
+/* Animación de entrada */
+.container > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.main-title { animation-delay: 0.1s; }
+.main-text { animation-delay: 0.2s; }
+.theme-toggle { animation-delay: 0.3s; }
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
 }
