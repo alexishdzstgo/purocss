@@ -7,8 +7,58 @@
     <link rel="stylesheet" href="./assets/css/paginacompleta.css">
 </head>
 <body>
-    <header>
-        <h1>paginac completa</h1>
+    <!-- Encabezado fijo-->
+    <header class="header">
+        <nav class="nav-menu">
+            <a href="#home" class="nav-link">Inicio</a>
+            <a href="#content" class="nav-link">Contenido</a>
+            <a href="#contact" class="nav-link">Contacto</a>
+        </nav>
     </header>
+    <!-- Sección de heroe-->
+    <section id="home" class="hero">
+        <h1>Bienvenido a Nuestra Página</h1>
+    </section>
+    <!-- Sección de contenido -->
+     <section id="content" class="content">
+        <h2 class="content__title">Nuestro Contenido</h2>
+        <div class="content-grid">
+            <div class="content-item">
+                <h3 class="content__item-title">Elemento 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="content-item">
+                <h3 class="content__item-title">Elemento 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="content-item">
+                <h3 class="content__item-title">Elemento 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+     </section>
+     <!-- Pie de página -->
+      <footer id="contact" class="footer">
+        <div class="footer__links">
+            <h3 class="footer__title">Enlaces</h3>
+            <ul class="footer__link-list">
+                <li><a href="#" class="footer__link">Inicio</a></li>
+                <li><a href="#" class="footer__link">Acerca</a></li>
+                <li><a href="#" class="footer__link">Servicios</a></li>
+            </ul>
+        </div>
+        
+      </footer>
 </body>
 </html>
+<!--
+9. Diseño de una página completa
+Crea una página web completa con las siguientes secciones:
+
+Un encabezado fijo con un menú de navegación.
+Una sección de héroe (hero section) con una imagen de fondo y un título centrado.
+Una sección de contenido con una cuadrícula de 3 columnas (usa CSS Grid).
+Un pie de página con enlaces y un formulario de contacto.
+Asegúrate de que toda la página sea responsiva y use al menos una animación (por ejemplo, el título de la sección de héroe aparece con un efecto de fade-in).
+Punto de evaluación: Integración de todos los conceptos (grid, flexbox, animaciones, responsividad).
+-->
