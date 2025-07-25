@@ -1,0 +1,39 @@
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Variables */
+:root{
+    --primary-color: #4CAF50;
+    --hover-color: #45a049;
+    --background-color: #f4f4f4;
+    --hero-background: #c5fef0;
+    --text-color: #333333;
+    --header-background: #ffffff;
+    --footer-background: #222222;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+/* Variables Globales */
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+/* Layout */
+.header{
+    background-color: var(--hero-background);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1rem;
+}
+.hero{
+    background-image: var(--hero-background);
+    min-height: 400px;
+}
