@@ -9,7 +9,7 @@
     --primary-color: #4CAF50;
     --hover-color: #45a049;
     --background-color: #f4f4f4;
-    --hero-background: #c5fef0;
+    --hero-background: #c8dcc8;
     --text-color: #333333;
     --header-background: #ffffff;
     --footer-background: #222222;
@@ -35,7 +35,6 @@ body{
 }
 .hero{
     background-image: var(--hero-background);
-    background-color: #a29a8e;
     min-height: 400px;
     background-size:cover;
     background-position: center;
@@ -45,7 +44,6 @@ body{
     margin-top: 60px;
 }
 .content{
-    background-color: darkkhaki;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
@@ -115,7 +113,6 @@ body{
     transition: color 0.3s ease;
 }
 .contact-form{
-    background-color: indianred;
     display: flex;
     flex-direction: column;
     gap: 1rem   ;
@@ -145,3 +142,80 @@ body{
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 /* Interacciones*/
+.nav-link:hover,
+.nav-link:focus,
+.footer__link:hover,
+.footer__link:focus{
+    color: var(--primary-color);
+    outline: none;
+}
+.contact-form__button:hover,
+.contact-form__button:focus{
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    outline: none;
+}
+/* Animaciones */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY();
+    }
+}
+/* Media queries */
+@media (max-width: 768px) { 
+    .hero__title{
+        font-size: 2rem;
+    }
+    .content__grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer__links,
+    .footer__contact{
+        margin: 1rem 0;
+    }
+}
+@media (max-width: 480px) { 
+    .header{
+        padding: 0.75rem;
+    }
+    .nav-menu{
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .hero{
+        min-height: 300px;
+        margin-top: 100px;
+    }
+    .hero__title{
+        font-size: 1.5rem;
+    }
+    .content{
+        padding: 1rem;
+    }
+    .content__grid{
+        grid-template-columns: 1fr;
+    }
+    .content__title{
+        font-size: 1.5rem;
+    }
+    .contact-form__input,
+    .contact-form__button{
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+}
+/* Animaciones adicionales */
+.content__item{
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(0.2s * var(--index))
+}
