@@ -16,9 +16,32 @@ const updateDockItems = () => {
         if(item.isHovered){
             scale = hoverItemScale;
             margin = expandedMargin;
-        } else if(item.isNeighbor){
+        } else if (item.isNeighbor){
             scale = neighborItemScale
             margin = expandedMargin;
         }
+        item.style.transform = `scale(${scale})`;
+        item.style.margin = `0 ${margin}`;
     });
 };
+
+dockItems.forEach((item) => {
+    item.addEventListener("mousemove", () =>{
+        dockItems.forEach((otherItem) => {
+            otherItem.isHovered = otherItem === item;
+            otherItem.isNeighbor =
+             Math.abs(
+                Array.from(dockItems).indexOf(otherItem) -
+                Array.from(dockItems).indexOf(item)
+             ) === 1;
+        });
+        updateDockItems();
+    });
+});
+
+dockContainer.addEventListener("mouseleave", () => {
+    dockItems.forEach((item) => {
+        item.isHovered = item.isNeighbor = false;
+    });
+    updateDockItems();
+});
