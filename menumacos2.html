@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MenuMacOs</title>
+  <link rel="stylesheet" href="./assets/css/menumacos2.css" />
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+</head>
+<body>
+<div class="container">
+  <div class="dock">
+    <div class="dock-item" data-label="Mail"><ion-icon name="mail-open-sharp"></ion-icon><span class="label">Mail</span></div>
+    <div class="dock-item" data-label="Night"><ion-icon name="moon-sharp"></ion-icon><span class="label">Night</span></div>
+    <div class="dock-item" data-label="Prism"><ion-icon name="prism-sharp"></ion-icon><span class="label">Prism</span></div>
+    <div class="dock-item" data-label="Settings"><ion-icon name="settings-sharp"></ion-icon><span class="label">Settings</span></div>
+    <div class="dock-item" data-label="Video"><ion-icon name="videocam-sharp"></ion-icon><span class="label">Video</span></div>
+    <div class="dock-item" data-label="Folder"><ion-icon name="folder-open-sharp"></ion-icon><span class="label">Folder</span></div>
+    <div class="dock-item" data-label="Chat"><ion-icon name="chatbubbles-sharp"></ion-icon><span class="label">Chat</span></div>
+    <div class="dock-item" data-label="Profile"><ion-icon name="body-sharp"></ion-icon><span class="label">Profile</span></div>
+  </div>
+</div>
+
+
+  <script >
+const dockContainer = document.querySelector(".dock");
+const dockItems = dockContainer.querySelectorAll(".dock-item");
+
+dockItems.forEach((item, index) => {
+  // Efecto hover con vecinos
+  item.addEventListener("mouseenter", () => {
+    clearClasses();
+    item.classList.add("active");
+    if (dockItems[index - 1]) dockItems[index - 1].classList.add("neighbor");
+    if (dockItems[index + 1]) dockItems[index + 1].classList.add("neighbor");
+  });
+
+  // Marcar como "abierto" al hacer clic
+  item.addEventListener("click", () => {
+    dockItems.forEach(i => i.classList.remove("open"));
+    item.classList.add("open");
+  });
+});
+
+// Quitar animación cuando el mouse sale del dock
+dockContainer.addEventListener("mouseleave", () => {
+  clearClasses();
+});
+
+function clearClasses() {
+  dockItems.forEach((item) => {
+    item.classList.remove("active", "neighbor");
+  });
+}
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Apps para Negocios</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; background: #f2f2f2; }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .tab { padding: 10px 20px; background: #ccc; border: none; cursor: pointer; border-radius: 5px; }
+    .tab.active { background: #007bff; color: #fff; }
+    .content { display: none; background: #fff; padding: 20px; border-radius: 10px; }
+    .content.active { display: block; }
+    .field { margin-bottom: 10px; }
+    .field input, .field textarea { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+    .field label { display: block; margin-bottom: 5px; font-weight: bold; }
+    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .list-item { background: #e6f0ff; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Tu Plataforma de Negocio</h1>
+  <div class="tabs">
+    <button class="tab active" data-tab="tienda">Tienda Virtual</button>
+    <button class="tab" data-tab="agenda">Agenda</button>
+    <button class="tab" data-tab="crm">CRM</button>
+    <button class="tab" data-tab="facturacion">Facturación</button>
+  </div>
+
+  <div id="tienda" class="content active">
+    <h2>Tienda Virtual</h2>
+    <div class="field">
+      <label>Nombre del producto</label>
+      <input id="producto-nombre" type="text" />
+    </div>
+    <div class="field">
+      <label>Precio</label>
+      <input id="producto-precio" type="number" />
+    </div>
+    <div class="field">
+      <label>Inventario</label>
+      <input id="producto-inventario" type="number" />
+    </div>
+    <div class="field">
+      <label>Descripción</label>
+      <textarea id="producto-descripcion"></textarea>
+    </div>
+    <button onclick="guardarProducto()">Subir Producto</button>
+    <hr>
+    <div id="lista-productos"></div>
+  </div>
+
+  <div id="agenda" class="content">
+    <h2>Agenda</h2>
+    <div class="field">
+      <label>Fecha</label>
+      <input id="cita-fecha" type="date" />
+    </div>
+    <div class="field">
+      <label>Hora</label>
+      <input id="cita-hora" type="time" />
+    </div>
+    <div class="field">
+      <label>Nombre del cliente</label>
+      <input id="cita-cliente" type="text" />
+    </div>
+    <button onclick="guardarCita()">Guardar Cita</button>
+    <hr>
+    <div id="lista-citas"></div>
+  </div>
+
+  <div id="crm" class="content">
+    <h2>CRM - Clientes</h2>
+    <div class="field">
+      <label>Nombre</label>
+      <input id="cliente-nombre" type="text" />
+    </div>
+    <div class="field">
+      <label>Contacto (correo o WhatsApp)</label>
+      <input id="cliente-contacto" type="text" />
+    </div>
+    <div class="field">
+      <label>Notas</label>
+      <textarea id="cliente-notas"></textarea>
+    </div>
+    <button onclick="guardarCliente()">Guardar Cliente</button>
+    <hr>
+    <div id="lista-clientes"></div>
+  </div>
+
+  <div id="facturacion" class="content">
+    <h2>Facturación</h2>
+    <div class="field">
+      <label>Cliente</label>
+      <input id="factura-cliente" type="text" />
+    </div>
+    <div class="field">
+      <label>Concepto</label>
+      <input id="factura-concepto" type="text" />
+    </div>
+    <div class="field">
+      <label>Monto</label>
+      <input id="factura-monto" type="number" />
+    </div>
+    <button onclick="generarRecibo()">Generar Recibo</button>
+    <hr>
+    <div id="lista-facturas"></div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    function guardarProducto() {
+      const nombre = document.getElementById('producto-nombre').value;
+      const precio = document.getElementById('producto-precio').value;
+      const inventario = document.getElementById('producto-inventario').value;
+      const descripcion = document.getElementById('producto-descripcion').value;
+      
+      if (!nombre || !precio || !inventario) return alert('Faltan datos.');
+
+      const producto = { nombre, precio, inventario, descripcion };
+      const productos = JSON.parse(localStorage.getItem('productos') || '[]');
+      productos.push(producto);
+      localStorage.setItem('productos', JSON.stringify(productos));
+      mostrarProductos();
+    }
+
+    function mostrarProductos() {
+      const productos = JSON.parse(localStorage.getItem('productos') || '[]');
+      const lista = document.getElementById('lista-productos');
+      lista.innerHTML = productos.map(p => `
+        <div class="list-item">
+          <strong>${p.nombre}</strong> - $${p.precio} (${p.inventario})<br>${p.descripcion}
+        </div>
+      `).join('');
+    }
+
+    function guardarCita() {
+      const fecha = document.getElementById('cita-fecha').value;
+      const hora = document.getElementById('cita-hora').value;
+      const cliente = document.getElementById('cita-cliente').value;
+      if (!fecha || !hora || !cliente) return alert('Faltan datos.');
+
+      const citas = JSON.parse(localStorage.getItem('citas') || '[]');
+      citas.push({ fecha, hora, cliente });
+      localStorage.setItem('citas', JSON.stringify(citas));
+      mostrarCitas();
+    }
+
+    function mostrarCitas() {
+      const citas = JSON.parse(localStorage.getItem('citas') || '[]');
+      const lista = document.getElementById('lista-citas');
+      lista.innerHTML = citas.map(c => `
+        <div class="list-item">
+          <strong>${c.cliente}</strong> - ${c.fecha} a las ${c.hora}
+        </div>
+      `).join('');
+    }
+
+    function guardarCliente() {
+      const nombre = document.getElementById('cliente-nombre').value;
+      const contacto = document.getElementById('cliente-contacto').value;
+      const notas = document.getElementById('cliente-notas').value;
+      if (!nombre || !contacto) return alert('Faltan datos.');
+
+      const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
+      clientes.push({ nombre, contacto, notas });
+      localStorage.setItem('clientes', JSON.stringify(clientes));
+      mostrarClientes();
+    }
+
+    function mostrarClientes() {
+      const clientes = JSON.parse(localStorage.getItem('clientes') || '[]');
+      const lista = document.getElementById('lista-clientes');
+      lista.innerHTML = clientes.map(c => `
+        <div class="list-item">
+          <strong>${c.nombre}</strong> - ${c.contacto}<br>${c.notas}
+        </div>
+      `).join('');
+    }
+
+    function generarRecibo() {
+      const cliente = document.getElementById('factura-cliente').value;
+      const concepto = document.getElementById('factura-concepto').value;
+      const monto = document.getElementById('factura-monto').value;
+      if (!cliente || !concepto || !monto) return alert('Faltan datos.');
+
+      const facturas = JSON.parse(localStorage.getItem('facturas') || '[]');
+      facturas.push({ cliente, concepto, monto });
+      localStorage.setItem('facturas', JSON.stringify(facturas));
+      mostrarFacturas();
+    }
+
+    function mostrarFacturas() {
+      const facturas = JSON.parse(localStorage.getItem('facturas') || '[]');
+      const lista = document.getElementById('lista-facturas');
+      lista.innerHTML = facturas.map(f => `
+        <div class="list-item">
+          <strong>${f.cliente}</strong> - ${f.concepto} - $${f.monto}
+        </div>
+      `).join('');
+    }
+
+    // Mostrar datos guardados al cargar
+    mostrarProductos();
+    mostrarCitas();
+    mostrarClientes();
+    mostrarFacturas();
+  </script>
+</body>
+</html>

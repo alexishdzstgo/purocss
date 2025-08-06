@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.dock {
+  display: flex;
+  align-items: flex-end;
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  margin: 0 10px;
+  transition: transform 0.2s ease, margin 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.dock-item .label {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.dock-item.active {
+  transform: scale(2.5);
+  margin: 0 40px;
+}
+
+.dock-item.neighbor {
+  transform: scale(2);
+  margin: 0 40px;
+}
+
+.dock-item::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 6px;
+  height: 6px;
+  background: #4fc3f7;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.dock-item.open::after {
+  opacity: 1;
+}
