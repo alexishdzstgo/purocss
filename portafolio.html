@@ -1,26 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
-    <link rel="stylesheet" href="./assets/css/portafolio.css">
+  <meta charset="UTF-8">
+  <title>Rayos de sol bajo el agua</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Fondo animado tipo agua */
+    .water-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: waterFlow 20s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes waterFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Estilo base de rayo */
+    .sun-ray {
+      position: absolute;
+      width: 100px;
+      height: 600px;
+      background: radial-gradient(circle at top left, rgba(255, 255, 200, 0.3) 0%, transparent 20%);
+      /*
+      background: radial-gradient(circle at top left, rgba(255, 255, 200, 0.3) 0%, transparent 80%);
+      */
+      mix-blend-mode: screen;
+      filter: blur(0px);
+      pointer-events: none;
+      z-index: 1;
+      transform-origin: top left;
+      border-radius: 100px;
+    }
+
+    /* Rayos con posiciones y trayectorias diferentes */
+    .ray1 {
+      top: -50px;
+      right: -50px;
+      animation: moveRay1 10s ease-in-out infinite alternate, colorShift 9s ease-in-out infinite alternate;
+    }
+
+    .ray2 {
+      top: -30px;
+      right: 120px;
+      animation: moveRay2 11s ease-in-out infinite alternate, colorShift 7s ease-in-out infinite alternate;
+    }
+
+    .ray3 {
+      top: -40px;
+      right: 190px;
+      animation: moveRay3 12s ease-in-out infinite alternate, colorShift 8s ease-in-out infinite alternate;
+    }
+
+    .ray4 {
+      top: -60px;
+      right: 360px;
+      animation: moveRay4 13s ease-in-out infinite alternate, colorShift 10s ease-in-out infinite alternate;
+    }
+
+    /* Movimiento de rayos simulando profundidad */
+    @keyframes moveRay1 {
+      0% { transform: translate(0, 0) rotate(20deg) scale(1); opacity: 0; }
+      100% { transform: translate(-80px, 400px) rotate(25deg) scale(1.1); opacity: 0.6; }
+    }
+
+    @keyframes moveRay2 {
+      0% { transform: translate(0, 0) rotate(15deg) scale(1); opacity: 0.3; }
+      100% { transform: translate(-70px, 420px) rotate(20deg) scale(1.05); opacity: 0; }
+    }
+
+    @keyframes moveRay3 {
+      0% { transform: translate(0, 0) rotate(10deg) scale(1); opacity: 0.35; }
+      100% { transform: translate(-90px, 450px) rotate(15deg) scale(1.08); opacity: 0; }
+    }
+
+    @keyframes moveRay4 {
+      0% { transform: translate(0, 0) rotate(8deg) scale(1); opacity: 0.3; }
+      100% { transform: translate(-100px, 480px) rotate(12deg) scale(1.07); opacity: 0.45; }
+    }
+
+    /* Cambio de color sutil */
+    @keyframes colorShift {
+      0% {
+        background: radial-gradient(circle at top left, rgba(255, 255, 200, 0.3) 0%, transparent 80%);
+      }
+      33% {
+        background: radial-gradient(circle at top left, rgba(200, 255, 240, 0.3) 0%, transparent 80%);
+      }
+      66% {
+        background: radial-gradient(circle at top left, rgba(180, 220, 255, 0.3) 0%, transparent 80%);
+      }
+      100% {
+        background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.3) 0%, transparent 80%);
+      }
+    }
+  </style>
 </head>
 <body>
-      <div class="absolute">
-    <div class="absolute inset-0 justify-center">
-      <div class="bg-shape1 bg-teal opacity-50 bg-blur"></div>
-      <div class="bg-shape2 bg-primary opacity-50 bg-blur"></div>
-      <div class="bg-shape3 bg-primary opacity-50 bg-blur"></div>
-      <div class="bg-shape4 bg-primary opacity-50 bg-blur"></div>
-      <div class="bg-shape5 bg-primary opacity-50 bg-blur"></div>
-      <div class="bg-shape6 bg-primary opacity-50 bg-blur"></div>
-      
-    </div>
-    <div>
-      <h1>Bienvenido</h1>
-    </div>
-  </div>
-    
+  <div class="water-background"></div>
+
+  <div class="sun-ray ray1"></div>
+  <div class="sun-ray ray2"></div>
+  <div class="sun-ray ray3"></div>
+  <div class="sun-ray ray4"></div>
 </body>
-</html> 
+</html>
