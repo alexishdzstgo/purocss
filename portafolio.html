@@ -1,118 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Rayos de sol bajo el agua</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fondo con Modo Claro/Oscuro</title>
+<style>
+    :root {
+        /* Variables modo oscuro */
+        --bg-dark: #0d0221;
+        --radial-left-dark: radial-gradient(circle at top left, rgba(96, 21, 134, 0.8) 0%, transparent 50%);
+        --radial-right-dark: radial-gradient(circle at top right, rgba(0, 180, 255, 0.5) 0%, transparent 50%);
+        --text-dark: #fff;
+        --subtitle-dark: #cfcfcf;
+
+        /* Variables modo claro */
+        --bg-light: #f4f6f9;
+        --radial-left-light: radial-gradient(circle at top left, rgba(255, 200, 150, 0.7) 0%, transparent 50%);
+        --radial-right-light: radial-gradient(circle at top right, rgba(150, 200, 255, 0.6) 0%, transparent 50%);
+        --text-light: #111;
+        --subtitle-light: #444;
+    }
+
     body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        transition: background 0.5s, color 0.5s;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
-    /* Fondo animado tipo agua */
-    .water-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, #264f61, #a5e9ff, #b5e9ff);
-      background-size: 400% 400%;
-      animation: waterFlow 20s ease infinite;
-      z-index: 0;
+    /* Modo oscuro por defecto */
+    body.dark {
+        background: var(--bg-dark);
+        background-image: var(--radial-left-dark), var(--radial-right-dark);
+        color: var(--text-dark);
     }
 
-    @keyframes waterFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Modo claro */
+    body.light {
+        background: var(--bg-light);
+        background-image: var(--radial-left-light), var(--radial-right-light);
+        color: var(--text-light);
     }
 
-    /* Estilo base de rayo */
-    .sun-ray {
-      position: absolute;
-      width: 70px;
-      height: 600px;
-      background: radial-gradient(circle at top left, rgba(255, 255, 200, 0.3) 0%, transparent 80%);
-      mix-blend-mode: screen;
-      filter: blur(25px);
-      pointer-events: none;
-      z-index: 1;
-      border-radius: 30px;
-      transform-origin: top left;
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
 
-    /* Rayos con posiciones y trayectorias diferentes */
-    .ray1 {
-      top: -50px;
-      right: -100px;
-      animation: moveRay1 10s ease-in-out infinite alternate, colorShift 9s ease-in-out infinite alternate;
+    p {
+        font-size: 1.2rem;
     }
 
-    .ray2 {
-      top: -50px;
-      right: 30px;
-      animation: moveRay2 11s ease-in-out infinite alternate, colorShift 7s ease-in-out infinite alternate;
+    /* Botón principal */
+    .btn {
+        background: linear-gradient(90deg, #ff5e62, #ff9966);
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        font-size: 1rem;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
-    .ray3 {
-      top: -40px;
-      right: 190px;
-      animation: moveRay3 12s ease-in-out infinite alternate, colorShift 8s ease-in-out infinite alternate;
+    .btn:hover {
+        transform: scale(1.05);
     }
 
-    .ray4 {
-      top: -150px;
-      right: 300px;
-      animation: moveRay4 13s ease-in-out infinite alternate, colorShift 10s ease-in-out infinite alternate;
+    /* Botón de cambio de tema */
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 25px;
+        background: #888;
+        border-radius: 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 3px;
+        transition: background 0.3s;
     }
 
-    /* Movimiento de rayos simulando profundidad */
-    @keyframes moveRay1 {
-      0% { transform: translate(0, 0) rotate(20deg) scale(1); opacity: 0.4; }
-      100% { transform: translate(-80px, 200px) rotate(25deg) scale(1.1); opacity: 0.6; }
+    .toggle-circle {
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.3s, background 0.3s;
     }
 
-    @keyframes moveRay2 {
-      0% { transform: translate(0, 0) rotate(15deg) scale(1); opacity: 0.3; }
-      100% { transform: translate(-70px, 80px) rotate(20deg) scale(1.05); opacity: 0.55; }
+    body.light .theme-toggle {
+        background: #bbb;
     }
 
-    @keyframes moveRay3 {
-      0% { transform: translate(0, 0) rotate(10deg) scale(1); opacity: 0.35; }
-      100% { transform: translate(-90px, 350px) rotate(15deg) scale(1.08); opacity: 0.5; }
+    body.light .toggle-circle {
+        transform: translateX(25px);
+        background: #333;
     }
-
-    @keyframes moveRay4 {
-      0% { transform: translate(0, 0) rotate(8deg) scale(1); opacity: 0.3; }
-      100% { transform: translate(-100px, 380px) rotate(12deg) scale(1.07); opacity: 0.45; }
-    }
-
-    /* Cambio de color sutil */
-    @keyframes colorShift {
-      0% {
-        background: radial-gradient(circle at top left, rgb(255, 255, 0) 0%, transparent 0%);
-      }
-      33% {
-        background: radial-gradient(circle at top left, rgb(0, 255, 187) 0%, transparent 80%);
-      }
-      66% {
-        background: radial-gradient(circle at top left, rgb(0, 135, 254) 0%, transparent 80%);
-      }
-      100% {
-        background: radial-gradient(circle at top left, rgb(255, 0, 0) 0%, transparent 80%);
-      }
-    }
-  </style>
+</style>
 </head>
-<body>
-  <div class="water-background"></div>
+<body class="dark">
 
-  <div class="sun-ray ray1"></div>
-  <div class="sun-ray ray2"></div>
-  <div class="sun-ray ray3"></div>
-  <div class="sun-ray ray4"></div>
+<!-- Botón de cambio de tema -->
+<div class="theme-toggle" onclick="toggleTheme()">
+    <div class="toggle-circle"></div>
+</div>
+
+<div class="content">
+    <h1>Build Your Site With Gutenberg</h1>
+    <p>Create beautiful and flexible pages with no coding needed.</p>
+    <button class="btn">See it in action</button>
+</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+}
+</script>
+
 </body>
 </html>
