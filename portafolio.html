@@ -3,153 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurora Boreal Multicapa</title>
-<style>
-:root {
-    /* Oscuro */
-    --bg-dark: #0d0221;
-    --aurora1-dark: radial-gradient(circle at 20% 30%, rgba(96, 21, 134, 0.35) 0%, transparent 50%);
-    --aurora2-dark: radial-gradient(circle at 80% 70%, rgba(0, 180, 255, 0.35) 0%, transparent 50%);
-    --aurora3-dark: radial-gradient(circle at 50% 50%, rgba(0, 255, 150, 0.25) 0%, transparent 50%);
-    --text-dark: #fff;
-
-    /* Claro */
-    --bg-light: #f4f6f9;
-    --aurora1-light: radial-gradient(circle at 20% 30%, rgba(255, 200, 150, 0.35) 0%, transparent 50%);
-    --aurora2-light: radial-gradient(circle at 80% 70%, rgba(150, 200, 255, 0.35) 0%, transparent 50%);
-    --aurora3-light: radial-gradient(circle at 50% 50%, rgba(200, 255, 200, 0.25) 0%, transparent 50%);
-    --text-light: #111;
-}
-
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    color: var(--text-dark);
-    transition: color 0.5s ease;
-    position: relative;
-}
-
-/* Capas aurora */
-.aurora-layer {
-    position: absolute;
-    inset: 0;
-    background-size: 200% 200%;
-    mix-blend-mode: screen;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-}
-
-/* Animaciones independientes */
-.layer1 { animation: aurora1 40s infinite; }
-.layer2 { animation: aurora2 60s infinite; }
-.layer3 { animation: aurora3 90s infinite; }
-
-@keyframes aurora1 {
-    0%, 100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-    50% { background-position: 100% 50%; filter: hue-rotate(40deg); }
-}
-
-@keyframes aurora2 {
-    0%, 100% { background-position: 50% 0%; filter: hue-rotate(0deg); }
-    50% { background-position: 50% 100%; filter: hue-rotate(-30deg); }
-}
-
-@keyframes aurora3 {
-    0%, 100% { background-position: 100% 50%; filter: hue-rotate(0deg); }
-    50% { background-position: 0% 50%; filter: hue-rotate(60deg); }
-}
-
-/* Modo oscuro */
-body.dark .layer1 { background-image: var(--aurora1-dark); }
-body.dark .layer2 { background-image: var(--aurora2-dark); }
-body.dark .layer3 { background-image: var(--aurora3-dark); }
-body.dark { background-color: var(--bg-dark); color: var(--text-dark); }
-
-/* Modo claro */
-body.light .layer1 { background-image: var(--aurora1-light); }
-body.light .layer2 { background-image: var(--aurora2-light); }
-body.light .layer3 { background-image: var(--aurora3-light); }
-body.light { background-color: var(--bg-light); color: var(--text-light); }
-
-/* Contenido */
-.content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: 1.2rem;
-}
-
-.btn {
-    background: linear-gradient(90deg, #ff5e62, #ff9966);
-    border: none;
-    color: white;
-    padding: 12px 25px;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.btn:hover { transform: scale(1.05); }
-
-/* Botón tema */
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 25px;
-    background: #888;
-    border-radius: 25px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 3px;
-    transition: background 0.3s;
-    z-index: 2;
-}
-
-.toggle-circle {
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 50%;
-    transition: transform 0.3s, background 0.3s;
-}
-
-body.light .theme-toggle { background: #bbb; }
-body.light .toggle-circle {
-    transform: translateX(25px);
-    background: #333;
-}
-</style>
+<title>Fondo con Modo Claro/Oscuro</title>
+<link rel="stylesheet" href="./assets/css/portafolio.css">
 </head>
-<body class="dark">
-
-<!-- Capas de aurora -->
-<div class="aurora-layer layer1"></div>
-<div class="aurora-layer layer2"></div>
-<div class="aurora-layer layer3"></div>
-
-<!-- Botón de cambio de tema -->
+<body class="light">
+<!--
+ Botón de cambio de tema 
 <div class="theme-toggle" onclick="toggleTheme()">
     <div class="toggle-circle"></div>
 </div>
-
-<!-- Contenido -->
+-->
 <div class="content">
     <h1>Build Your Site With Gutenberg</h1>
     <p>Create beautiful and flexible pages with no coding needed.</p>

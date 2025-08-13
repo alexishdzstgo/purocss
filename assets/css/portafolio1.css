@@ -1,4 +1,4 @@
-    :root {
+:root {
         /* Variables modo oscuro */
         --bg-dark: #0d0221;
         --radial-left-dark: radial-gradient(circle at top left, rgba(96, 21, 134, 0.8) 0%, transparent 50%);
@@ -7,7 +7,7 @@
 
         /* Variables modo claro */
         --bg-light: #f4f6f9;
-        --radial-left-light: radial-gradient(circle at top left, rgba(206, 150, 255, 0.7) 0%, transparent 50%);
+        --radial-left-light: radial-gradient(circle at top left, rgba(209, 150, 255, 0.7) 0%, transparent 50%);
         --radial-right-light: radial-gradient(circle at top right, rgba(150, 200, 255, 0.6) 0%, transparent 50%);
         --text-light: #111;
     }
@@ -20,38 +20,35 @@
         align-items: center;
         text-align: center;
         font-family: Arial, sans-serif;
-        transition: background 0.5s, color 0.5s;
+        transition: color 0.5s;
         background-repeat: no-repeat;
-        background-size: 300% 300%;
-        animation: moveBackground 40s ease-in-out infinite alternate,
-                   shiftColors 60s ease-in-out infinite alternate;
+        background-size: 200% 200%; /* más grande para que pueda moverse */
+        animation: moveGradient 15s ease-in-out infinite alternate;
     }
 
-    @keyframes moveBackground {
-        0%   { background-position: left top; }
-        25%  { background-position: right top; }
-        50%  { background-position: right bottom; }
-        75%  { background-position: left bottom; }
-        100% { background-position: left top; }
+    /* Animación para mover las luces */
+    @keyframes moveGradient {
+        0% {
+            background-position: 0% 0%, 100% 0%;
+        }
+        50% {
+            background-position: 10% 5%, 90% 5%;
+        }
+        100% {
+            background-position: 0% 0%, 100% 0%;
+        }
     }
 
-    /* Animación de cambio de tonalidad */
-    @keyframes shiftColors {
-        0%   { filter: hue-rotate(0deg) saturate(1); }
-        50%  { filter: hue-rotate(15deg) saturate(1.1); }
-        100% { filter: hue-rotate(-15deg) saturate(1); }
-    }
-
-    /* Modo oscuro por defecto */
+    /* Modo oscuro */
     body.dark {
-        background: var(--bg-dark);
+        background-color: var(--bg-dark);
         background-image: var(--radial-left-dark), var(--radial-right-dark);
         color: var(--text-dark);
     }
 
     /* Modo claro */
     body.light {
-        background: var(--bg-light);
+        background-color: var(--bg-light);
         background-image: var(--radial-left-light), var(--radial-right-light);
         color: var(--text-light);
     }
