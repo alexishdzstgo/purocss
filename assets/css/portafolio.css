@@ -55,6 +55,33 @@
         background-image: var(--radial-left-light), var(--radial-right-light);
         color: var(--text-light);
     }
+nav{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.137);
+    backdrop-filter: blur(10px);
+    padding: 10px 25px;
+    border-radius: 15px;
+    border: 0.1px solid #c9c8c8;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.111);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+    transition: background 0.3s, color 0.3s;
+}
+    nav a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #ff5e62;
+    }
+
 
     h1 {
         font-size: 2.5rem;
